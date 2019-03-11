@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--定义bean -->
+   <bean id="user" class="com.spring.work1.UserDaoimpl"/>
+    <bean id="beforeadvice" class="com.spring.work1.MyBeforeAdvice"/>
+    <aop:config>
+        <aop:aspect id="before1" ref="beforeadvice">
+            <aop:pointcut id="PointCut" expression="execution(* com.spring.work1.*.*(..))"/>
+            <aop:before method="beforeMethod" pointcut-ref="PointCut"/>
+        </aop:aspect>
+    </aop:config>
+    <aop:aspectj-autoproxy/>
+    <bean id="fighter" class="com.spring.work3.Fighter"/>
+    <bean id="tiger" class="com.spring.work3.Tiger"/>
+<aop:aspectj-autoproxy/>
+    <bean id="imageCopy" class="com.spring.work4.ImageCopy"/>
+    <bean id="imageHandler" class="com.spring.work4.ImageHandler"/>
+
+
+
+</beans>
